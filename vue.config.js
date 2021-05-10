@@ -1,9 +1,8 @@
 module.exports = {
   pluginOptions: {
     moment: {
-      locales: [
-        'us'
-      ]
-    }
-  }
-}
+      locales: ["us"],
+    },
+  },
+  publicPath: "./",
+};

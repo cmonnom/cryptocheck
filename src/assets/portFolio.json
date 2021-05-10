@@ -1,0 +1,53 @@
+{"portFolio": {
+    "LTC": {
+      "amount": 1.269268,
+      "startingValue": 400.61,
+      "startedDate": "2021-04-16"
+    },
+    "XRP": {
+      "amount": 39.6122,
+      "startingValue": 18.41,
+      "startedDate": "2021-03-17",
+      "ignore": true
+    },
+    "ETH": {
+      "amount": 0.0361479,
+      "startingValue": 129.31,
+      "startedDate": "2021-05-07"
+    },
+    "BTC": {
+      "amount": 0.00439995,
+      "startingValue": 276.37,
+      "startedDate": "2021-04-15"
+    },
+    "EOS": {
+      "amount": 28.1518,
+      "startingValue": 217.77,
+      "startedDate": "2021-04-15"
+    },
+    "XLM": {
+      "amount": 387.9436501,
+      "startingValue": 228.42,
+      "startedDate": "2021-04-11"
+    },
+    "BSV": { "amount": 0.0116, "startingValue": 2.23, "startedDate": "2021-03-17",  "ignore": true },
+    "DAI": { "amount": 5.9607, "startingValue": 6.0, "startedDate": "2021-03-17",  "ignore": true  },
+    "GRT": {
+      "amount": 144.80564222,
+      "startingValue": 211.29,
+      "startedDate": "2021-05-10"
+    },
+    "BCH": {
+      "amount": 0.01164053,
+      "startingValue": 6.0,
+      "startedDate": "2021-03-17"
+    },
+    "ANKR": {
+        "amount": 592.66508985,
+        "startingValue": 96.46,
+        "startedDate": "2021-04-09"
+    }
+  },
+  "totalPurchased": 1595.72,
+  "totalSold": 1102.16
+}

@@ -11,5 +11,8 @@ Vue.use(axios);
 new Vue({
   router,
   store,
+  beforeCreate() {
+    this.$store.commit("initFromStorage");
+  },
   render: (h) => h(App),
 }).$mount("#app");
