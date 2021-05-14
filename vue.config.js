@@ -4,5 +4,8 @@ module.exports = {
       locales: ["us"],
     },
   },
+
   publicPath: "./",
+
+  transpileDependencies: ["vuetify"],
 };

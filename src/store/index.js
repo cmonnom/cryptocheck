@@ -8,8 +8,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cryptoValues: {},
+    cryptoValuesHistory: {},
     times: [],
+    historyTimes: [],
     rates: {},
+    historyRates: {},
+    // portFolio: {},
+    // totalPurchased: 0,
+    // totalSold: 0,
     portFolio: data.portFolio,
     totalPurchased: data.totalPurchased,
     totalSold: data.totalSold,
@@ -41,6 +47,16 @@ export default new Vuex.Store({
       state.earnings = localStorage.getItem("earnings")
         ? JSON.parse(localStorage.getItem("earnings"))
         : [];
+      var array = Object.values(state.cryptoValues);
+      var cryptoLength = array.length > 0 ? array[0].length : 0;
+      if (cryptoLength != state.times.length) {
+        state.cryptoValues = {};
+        state.times = [];
+        state.earnings = [];
+        localStorage.setItem("cryptoValues", "{}");
+        localStorage.setItem("times", "[]");
+        localStorage.setItem("earnings", "[]");
+      }
     },
     appendCrypto(state, payload) {
       var newCryptoValues = JSON.parse(JSON.stringify(state.cryptoValues));
@@ -75,7 +91,12 @@ export default new Vuex.Store({
       state.totalStarted = totalStarted;
       var earning = totalCurrent - totalStarted;
       state.earnings.push(earning);
-      state.times.push(DateTime.now().toFormat("yyyy-LL-dd HH:mm:ss"));
+      var date = payload.date;
+      // console.log("appendCrypto", date);
+      if (!date) {
+        date = DateTime.now().toFormat("yyyy-LL-dd HH:mm:ss");
+      }
+      state.times.push(date);
       // //fix earnings[0]
       // if (state.earnings[0] == -state.totalPurchased) {
       //   state.earnings[0] = null;
@@ -84,12 +105,7 @@ export default new Vuex.Store({
       localStorage.setItem("times", JSON.stringify(state.times));
       localStorage.setItem("earnings", JSON.stringify(state.earnings));
     },
-    // appendEarnings(state, totalCurrent) {
-    //   state.totalCurrent = totalCurrent;
-    //   var earning = totalCurrent - state.totalPurchased;
-    //   state.earnings.push(earning);
-    //   localStorage.setItem("earnings", JSON.stringify(state.earnings));
-    // },
+    // updateHistory(state, payload) {},
     clearStorage(state) {
       state.cryptoValues = {};
       state.times = [];
@@ -97,6 +113,14 @@ export default new Vuex.Store({
       localStorage.setItem("cryptoValues", "{}");
       localStorage.setItem("times", "[]");
       localStorage.setItem("earnings", "[]");
+    },
+    updatePortFolio(state, payload) {
+      state.portFolio = payload.portFolio;
+      state.totalPurchased = payload.totalPurchased;
+      state.totalSold = payload.totalSold;
+    },
+    updateHistoryTimes(state, payload) {
+      state.historyTimes = payload;
     },
   },
   getters: {

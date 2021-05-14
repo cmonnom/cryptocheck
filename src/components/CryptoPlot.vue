@@ -83,6 +83,7 @@ export default {
         autosize: true,
         margin: {
           t: 20,
+          r: 5,
         },
         showlegend: false,
         annotations: annotations,
@@ -168,6 +169,7 @@ export default {
         autosize: true,
         margin: {
           t: 40,
+          r: 5,
         },
         showlegend: false,
         title: "Earnings",

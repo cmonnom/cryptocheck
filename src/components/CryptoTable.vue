@@ -8,6 +8,15 @@
         <th title="Change since last transaction">Profit</th>
         <th title="Pct change since last transaction">Change</th>
         <th>Duration</th>
+        <th colspan="2">
+          <v-file-input
+            ref="portFolioInput"
+            truncate-length="15"
+            accept=".json"
+            label="Upload portfolio"
+            @change="handleNewPortFolio"
+          ></v-file-input>
+        </th>
       </tr>
       <tr
         :class="row.color"
@@ -101,9 +110,9 @@ export default {
           var profit = currentValue - startingValue;
           var color = "";
           if (profit < 0) {
-            color = "red";
+            color = "red--text";
           } else if (profit > 0) {
-            color = "green";
+            color = "green--text";
           }
           var pctProfit = profit / startingValue;
           // var hasChanged = this.previousPortFolio[c] != profit;
@@ -145,6 +154,15 @@ export default {
     getTextColor(index) {
       return "color:" + this.$store.getters.getColor(index);
     },
+    clearFileInput() {
+      this.$refs.portFolioInput.reset();
+    },
+    handleNewPortFolio(file) {
+      if (!file) {
+        return;
+      }
+      this.$emit("new-port-folio", file);
+    },
   },
   mounted() {
     this.calcPortfolioValues();
@@ -163,6 +181,9 @@ export default {
       return this.formatCurrency(this.calcProfit);
     },
     totalProfitPctFormatted() {
+      if (this.totalCurrent == 0) {
+        return this.formatPercent(0);
+      }
       return this.formatPercent(this.calcProfit / this.totalCurrent);
     },
     totalInterestFormatted() {
@@ -190,9 +211,9 @@ export default {
     },
     balanceColor() {
       if (this.calcBankBalance < 0) {
-        return "red";
+        return "red--text";
       } else {
-        return "green";
+        return "green--text";
       }
     },
     ...mapGetters({
@@ -214,7 +235,7 @@ export default {
 <style>
 th,
 td {
-  padding: 5px 15px 5px 15px;
+  padding: 2px 10px 2px 10px;
   border-bottom: 1px solid #ddd;
 }
 td.number {
@@ -231,12 +252,6 @@ td.label {
 }
 .bold {
   font-weight: bold;
-}
-.red {
-  color: #f44336;
-}
-.green {
-  color: #4caf50;
 }
 .top {
   vertical-align: top;
