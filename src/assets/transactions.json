@@ -1,0 +1,34 @@
+{
+  "bought": [
+    { "date": "2017-06-29T04:59:14Z", "currency": "BTC", "amount": 31.99 },
+    { "date": "2017-12-11T22:09:54Z", "currency": "BTC", "amount": 30 },
+    { "date": "2021-04-15T14:40:04Z", "currency": "BTC", "amount": 200 },
+    { "date": "2019-02-13T00:08:36Z", "currency": "BSV", "amount": 0.76 },
+    { "date": "2017-06-29T05:19:27Z", "currency": "ETH", "amount": 31.99 },
+    { "date": "2017-12-11T22:10:09Z", "currency": "ETH", "amount": 30 },
+    { "date": "2021-02-04T19:18:21Z", "currency": "ETH", "amount": 100 },
+    { "date": "2017-06-29T05:20:05Z", "currency": "LTC", "amount": 31.99 },
+    { "date": "2017-12-11T22:10:24Z", "currency": "LTC", "amount": 30 },
+    { "date": "2018-01-01T21:55:04Z", "currency": "LTC", "amount": 60 },
+    { "date": "2021-02-04T19:20:17Z", "currency": "LTC", "amount": 100 },
+    { "date": "2021-03-25T17:15:20Z", "currency": "LTC", "amount": 199.99 },
+    { "date": "2019-08-14T21:25:39Z", "currency": "XRP", "amount": 50 },
+    { "date": "2021-03-18T15:00:59Z", "currency": "XLM", "amount": 199 },
+    { "date": "2021-04-15T14:39:24Z", "currency": "EOS", "amount": 200 },
+    { "date": "2021-05-10T19:34:38Z", "currency": "GRT", "amount": 200 },
+    { "date": "2021-04-09T15:43:55Z", "currency": "ANKR", "amount": 100 },
+    { "date": "2021-06-02T15:43:55Z", "currency": "OXT", "amount": 200 }
+  ],
+  "sold": [
+    { "date": "2017-12-17T21:56:26Z", "currency": "BTC", "amount": 197.01 },
+    { "date": "2020-11-24T20:05:38Z", "currency": "ETH", "amount": 48.01 },
+    { "date": "2021-03-13T21:50:52Z", "currency": "ETH", "amount": 197.01 },
+    { "date": "2021-05-08T04:44:42Z", "currency": "ETH", "amount": 130 },
+    { "date": "2020-11-24T20:06:09Z", "currency": "LTC", "amount": 48.01 },
+    { "date": "2021-04-08T23:50:41Z", "currency": "LTC", "amount": 121.01 },
+    { "date": "2021-04-16T17:18:42Z", "currency": "LTC", "amount": 157.01 },
+    { "date": "2020-11-24T20:04:59Z", "currency": "XRP", "amount": 97.01 },
+    { "date": "2021-04-11T16:54:11Z", "currency": "XLM", "amount": 107.01 },
+    { "date": "2021-05-11T23:28:53Z", "currency": "EOS", "amount": 161.01 }
+  ]
+}

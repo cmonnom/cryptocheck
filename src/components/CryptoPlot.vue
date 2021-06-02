@@ -35,6 +35,8 @@ export default {
       var traceDataLayout = {};
       if (this.showAll) {
         traceDataLayout = this.getAllTraceDataLayout();
+      } else if (this.showTransactions) {
+        traceDataLayout = this.getTransactionsTraceDataLayout();
       } else {
         traceDataLayout = this.getEarningsTraceDataLayout();
         Plotly.react(this.plotId, [], traceDataLayout.layout); //force achange detection in Plotly data
@@ -119,15 +121,6 @@ export default {
         };
       }
       layout.grid.subplots = subplots;
-      //   layout.grid.subplots = [
-      //     ["xy", "x2y2"],
-      //     ["xy3", "x2y4"],
-      //     ["xy5", "x2y6"],
-      //     ["xy7", "x2y8"],
-      //     ["xy9", "x2y10"],
-      //   ];
-      //   var toprint = data.map((d) => d.xaxis + d.yaxis);
-      //   console.log(toprint, subplots);
       return { data: data, layout: layout };
     },
     getEarningsTraceDataLayout() {
@@ -181,6 +174,85 @@ export default {
       };
       return { data: data, layout: layout };
     },
+    getTransactionsTraceDataLayout() {
+      var data = [];
+      var boughtTrace = {
+        mode: "markers+lines+text",
+        type: "scattergl",
+        x: this.bought.dates,
+        y: this.bought.values,
+        text: this.bought.labels,
+        textposition: "left",
+        textfont: {
+          color: this.$store.getters.getColor(0),
+        },
+        name: "Bought",
+      };
+      var soldTrace = {
+        mode: "markers+lines+text",
+        type: "scattergl",
+        x: this.sold.dates,
+        y: this.sold.values,
+        text: this.sold.labels,
+        textposition: "right",
+        textfont: {
+          color: this.$store.getters.getColor(1),
+        },
+        name: "Sold",
+      };
+      data.push(boughtTrace);
+      data.push(soldTrace);
+      // var annotations = [];
+      // for (let i = 0; i < this.bought.dates.length; i++) {
+      //   let annotation = {
+      //     text: this.bought.labels[i],
+      //     showarrow: false,
+      //     xref: "x",
+      //     yref: "y",
+      //     x: boughtTrace.x[i],
+      //     ax: 100,
+      //     y: boughtTrace.y[i],
+      //     font: {
+      //       color: this.$store.getters.getColor(0),
+      //     },
+      //     bgcolor: "#FFFFFF",
+      //   };
+      //   annotations.push(annotation);
+      // }
+      // for (let i = 0; i < this.sold.dates.length; i++) {
+      //   let annotation = {
+      //     text: this.sold.labels[i],
+      //     showarrow: false,
+      //     xref: "x",
+      //     yref: "y",
+      //     x: soldTrace.x[i],
+      //     ax: 100,
+      //     y: soldTrace.y[i],
+      //     font: {
+      //       color: this.$store.getters.getColor(1),
+      //     },
+      //     bgcolor: "#FFFFFF",
+      //   };
+      //   annotations.push(annotation);
+      // }
+
+      var layout = {
+        height: window.innerHeight / 2,
+        autosize: true,
+        margin: {
+          t: 40,
+          r: 5,
+        },
+        showlegend: false,
+        title: "Transactions",
+        yaxis: {
+          tickformat: "$,.2f",
+          rangemode: "tozero",
+        },
+        // annotations: annotations,
+      };
+      return { data: data, layout: layout };
+    },
     formatPercent(value) {
       return Intl.NumberFormat("en-US", {
         style: "percent",
@@ -197,9 +269,14 @@ export default {
       earnings: "getEarnings",
       totalPurchased: "getTotalPurchased",
       portFolioOverTime: "getPortFolioOverTime",
+      bought: "getBoughtData",
+      sold: "getSoldData",
     }),
     showAll() {
       return this.show == "All";
+    },
+    showTransactions() {
+      return this.show == "Transactions";
     },
   },
   watch: {
@@ -209,6 +286,8 @@ export default {
     var traceDataLayout = {};
     if (this.showAll) {
       traceDataLayout = this.getAllTraceDataLayout();
+    } else if (this.showTransactions) {
+      traceDataLayout = this.getTransactionsTraceDataLayout();
     } else {
       traceDataLayout = this.getEarningsTraceDataLayout();
     }

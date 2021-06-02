@@ -28,13 +28,31 @@
     <v-container fluid>
       <v-row>
         <v-col cols="12" md="6">
-          <div class="pb-2">
-            <CryptoTable
-              ref="cryptoTable"
-              @new-port-folio="handleNewPortFolio"
-            />
-          </div>
-          <div><CryptoPlot show="Earnings" plotId="earningsPlot" /></div>
+          <v-tabs left v-model="tab">
+            <v-tab key="0">Earnings</v-tab>
+            <v-tab key="1">Transactions</v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="tab">
+            <v-tab-item :key="0">
+              <div class="pb-2">
+                <CryptoTable
+                  ref="cryptoTable"
+                  @new-port-folio="handleNewPortFolio"
+                />
+              </div>
+              <div><CryptoPlot show="Earnings" plotId="earningsPlot" /></div
+            ></v-tab-item>
+            <v-tab-item :key="1">
+              <div class="pb-2">
+                <CryptoSummary ref="cryptoSummary" />
+              </div>
+              <div>
+                <CryptoPlot
+                  show="Transactions"
+                  plotId="transactionsPlot"
+                /></div
+            ></v-tab-item>
+          </v-tabs-items>
         </v-col>
         <!-- <v-col v-show="fileDragging">
           <div @drop="handleFileDrop" max-width="500px">
@@ -65,6 +83,7 @@
 // import HelloWorld from "@/components/HelloWorld.vue";
 import CryptoTable from "@/components/CryptoTable.vue";
 import CryptoPlot from "@/components/CryptoPlot.vue";
+import CryptoSummary from "@/components/CryptoSummary.vue";
 import { mapGetters } from "vuex";
 const { DateTime } = require("luxon");
 
@@ -73,6 +92,7 @@ export default {
   components: {
     CryptoTable,
     CryptoPlot,
+    CryptoSummary,
   },
   data() {
     return {
@@ -80,6 +100,7 @@ export default {
       apiHistoryUrlPart1: "https://api.coinbase.com/v2/prices/",
       apiHistoryUrlPart2: "/spot",
       fileDragging: false,
+      tab: 0,
     };
   },
   methods: {

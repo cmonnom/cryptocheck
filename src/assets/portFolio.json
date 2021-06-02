@@ -46,8 +46,13 @@
         "amount": 592.66508985,
         "startingValue": 96.46,
         "startedDate": "2021-04-09"
+    },
+    "OXT": {
+      "amount": 486.4264,
+      "startingValue": 197.01,
+      "startedDate": "2021-06-02"
     }
   },
-  "totalPurchased": 1595.72,
+  "totalPurchased": 1795.72,
   "totalSold": 1263.17
 }

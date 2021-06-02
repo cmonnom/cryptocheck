@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import data from "../assets/portFolio.json";
+import transactionData from "../assets/transactions.json";
 const { DateTime } = require("luxon");
 
 Vue.use(Vuex);
@@ -23,6 +24,8 @@ export default new Vuex.Store({
     totalStarted: 0,
     currencies: [],
     earnings: [],
+    bought: transactionData.bought,
+    sold: transactionData.sold,
     defaultColors: [
       "#1f77b4", // muted blue
       "#ff7f0e", // safety orange
@@ -167,6 +170,50 @@ export default new Vuex.Store({
     getColor: (state) => (index) => {
       var boundedIndex = index % state.defaultColors.length;
       return state.defaultColors[boundedIndex];
+    },
+    getBoughtData: (state) => {
+      var dates = [];
+      var labels = [];
+      var values = [];
+      var sorted = state.bought.sort((a, b) => (a.date > b.date ? 1 : -1));
+      var lastValue = 0;
+      for (var i = 0; i < sorted.length; i++) {
+        dates.push(sorted[i].date);
+        labels.push(sorted[i].currency);
+        var newValue = sorted[i].amount + lastValue;
+        values.push(newValue);
+        lastValue = newValue;
+      }
+      return {
+        dates: dates,
+        labels: labels,
+        values: values,
+      };
+    },
+    getSoldData: (state) => {
+      var dates = [];
+      var labels = [];
+      var values = [];
+      var sorted = state.sold.sort((a, b) => (a.date > b.date ? 1 : -1));
+      var lastValue = 0;
+      for (var i = 0; i < sorted.length; i++) {
+        dates.push(sorted[i].date);
+        labels.push(sorted[i].currency);
+        var newValue = sorted[i].amount + lastValue;
+        values.push(newValue);
+        lastValue = newValue;
+      }
+      return {
+        dates: dates,
+        labels: labels,
+        values: values,
+      };
+    },
+    getBoughtTransactions: (state) => {
+      return state.bought;
+    },
+    getSoldTransactions: (state) => {
+      return state.sold;
     },
   },
   actions: {},
