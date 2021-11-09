@@ -29,7 +29,7 @@
     { "date": "2021-04-16T17:18:42Z", "currency": "LTC", "amount": 157.01 },
     { "date": "2020-11-24T20:04:59Z", "currency": "XRP", "amount": 97.01 },
     { "date": "2021-04-11T16:54:11Z", "currency": "XLM", "amount": 107.01 },
-    { "date": "2021-05-11T23:28:53Z", "currency": "EOS", "amount": 161.01 }
+    { "date": "2021-05-11T23:28:53Z", "currency": "EOS", "amount": 161.01 },
      { "date": "2021-11-08T23:28:53Z", "currency": "OXT", "amount": 77.01 }
   ]
 }
