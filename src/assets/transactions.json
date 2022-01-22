@@ -17,7 +17,10 @@
     { "date": "2021-04-15T14:39:24Z", "currency": "EOS", "amount": 200 },
     { "date": "2021-05-10T19:34:38Z", "currency": "GRT", "amount": 200 },
     { "date": "2021-04-09T15:43:55Z", "currency": "ANKR", "amount": 100 },
-    { "date": "2021-06-02T15:43:55Z", "currency": "OXT", "amount": 200 }
+    { "date": "2021-06-02T15:43:55Z", "currency": "OXT", "amount": 200 },
+    { "date": "2022-01-22T07:46:08Z", "currency": "GRT", "amount": 50 },
+    { "date": "2022-01-22T07:47:31Z", "currency": "LTC", "amount": 50 },
+    { "date": "2022-01-22T07:48:14Z", "currency": "EOS", "amount": 25 }
   ],
   "sold": [
     { "date": "2017-12-17T21:56:26Z", "currency": "BTC", "amount": 197.01 },
