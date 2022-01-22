@@ -1,8 +1,8 @@
 {"portFolio": {
     "LTC": {
-      "amount": 1.269268,
-      "startingValue": 400.61,
-      "startedDate": "2021-04-16"
+      "amount": 1.71369208,
+      "startingValue": 187.77,
+      "startedDate": "2022-01-22"
     },
     "XRP": {
       "amount": 39.6122,
@@ -21,9 +21,9 @@
       "startedDate": "2021-04-15"
     },
     "EOS": {
-      "amount": 16.1593,
-      "startingValue": 222.83,
-      "startedDate": "2021-05-11"
+      "amount": 26.6026,
+      "startingValue": 59.32,
+      "startedDate": "2022-01-22"
     },
     "XLM": {
       "amount": 387.9436501,
@@ -33,9 +33,9 @@
     "BSV": { "amount": 0.0116, "startingValue": 2.23, "startedDate": "2021-03-17",  "ignore": true },
     "DAI": { "amount": 5.9607, "startingValue": 6.0, "startedDate": "2021-03-17",  "ignore": true  },
     "GRT": {
-      "amount": 144.80564222,
-      "startingValue": 211.29,
-      "startedDate": "2021-05-10"
+      "amount": 270.35398461,
+      "startingValue": 103.41,
+      "startedDate": "2022-01-22"
     },
     "BCH": {
       "amount": 0.01164053,
