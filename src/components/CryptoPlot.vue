@@ -116,7 +116,7 @@ export default {
         }
         layout["yaxis" + i] = {
           tickformat: "$,.2f",
-          title: title,
+          title: { text: title },
           //   rangemode: "tozero",
         };
       }
@@ -165,7 +165,7 @@ export default {
           r: 5,
         },
         showlegend: false,
-        title: "Earnings",
+        title: { text: "Earnings" },
         yaxis: {
           tickformat: "$,.2f",
           rangemode: "tozero",
@@ -244,7 +244,7 @@ export default {
           r: 5,
         },
         showlegend: false,
-        title: "Transactions",
+        title: { text: "Transactions" },
         yaxis: {
           tickformat: "$,.2f",
           rangemode: "tozero",
@@ -291,7 +291,7 @@ export default {
     } else {
       traceDataLayout = this.getEarningsTraceDataLayout();
     }
-    Plotly.plot(
+    Plotly.newPlot(
       this.plotId,
       traceDataLayout.data,
       traceDataLayout.layout,
