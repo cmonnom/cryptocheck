@@ -196,7 +196,7 @@ export default {
       } else {
         // Use DataTransfer interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-          this.handleNewPortFolio(file);
+          this.handleNewPortFolio(ev.dataTransfer.files[i]);
           break;
         }
       }
@@ -244,6 +244,8 @@ export default {
       this.axios
         .get(url, {
           params: {},
+          // keep the raw text: validateJson() checks the string before parsing
+          responseType: "text",
         })
         .then((response) => {
           this.handleNewPortFolioContent(response.data);
