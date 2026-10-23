@@ -1330,10 +1330,10 @@ vue-axios@^3.6.0:
   resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.6.0.tgz#d9f7168b36d1b78dd34798afd975e87c7c5825c7"
   integrity sha512-fgCDdHzujSdZzhP45Ob20P3UymD45/y98ZeB9xlLTwvFkU7Y69OB9QENNUcG20pXAnT8WhT+bLWO9f95Pc1rYg==
 
-vue-eslint-parser@10.3.0:
-  version "10.3.0"
-  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-10.3.0.tgz#581eef6b67504b4e1efb9208febc9cda52cadd6b"
-  integrity sha512-Aj1cCjD3HQjp5B8cLr6zJjISEOkr0MCrqvwLg3MeyGDjKlL8uMFLKfVbP7Te09cG9Y9KmzJwwnD7hf884CpcOg==
+vue-eslint-parser@^10.3.0:
+  version "10.4.1"
+  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-10.4.1.tgz#3d0aabb6604dac3fcd94f893291cb9e754cc392c"
+  integrity sha512-Gk6gRDj0n/fkRa3C3l0bBheoBckUq/Rs0F/TvMWIS6nzzx67amAViMe9CkNgsP2tXyQONvGiHQESHwFtZ3aYDA==
   dependencies:
     debug "^4.4.0"
     eslint-scope "^8.2.0 || ^9.0.0"
