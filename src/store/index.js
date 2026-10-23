@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import data from "../assets/portFolio.json";
 import transactionData from "../assets/transactions.json";
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
 
 Vue.use(Vuex);
 

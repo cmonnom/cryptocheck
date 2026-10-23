@@ -35,7 +35,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
 export default {
   name: "CryptoSummary",
   props: {},

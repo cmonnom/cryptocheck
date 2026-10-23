@@ -80,12 +80,11 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import CryptoTable from "@/components/CryptoTable.vue";
 import CryptoPlot from "@/components/CryptoPlot.vue";
 import CryptoSummary from "@/components/CryptoSummary.vue";
 import { mapGetters } from "vuex";
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
 
 export default {
   name: "Home",
