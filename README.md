@@ -1,29 +1,35 @@
 # crypto_check
 
+Vue 2.7 + Vuetify 2 app, built with [Vite](https://vite.dev/).
+
+Requires Node `^20.19.0 || >=22.12.0` and Yarn 1.x.
+
 ## Project setup
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Start the dev server with hot reload
 ```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+yarn dev
 ```
 
-### Run your tests
+### Build for production (output in `dist/`)
 ```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
+yarn build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Preview the production build locally
+```
+yarn preview
+```
+
+### Lint
+```
+yarn lint
+```
+
+## Deploying on Render (static site)
+- Build command: `yarn install --frozen-lockfile; yarn build`
+- Publish directory: `dist`
+- Node version comes from `engines` in `package.json`, unless a `NODE_VERSION` environment variable is set on the service.

@@ -39,9 +39,15 @@ export default {
         traceDataLayout = this.getTransactionsTraceDataLayout();
       } else {
         traceDataLayout = this.getEarningsTraceDataLayout();
-        Plotly.react(this.plotId, [], traceDataLayout.layout); //force achange detection in Plotly data
       }
-      Plotly.react(this.plotId, traceDataLayout.data, traceDataLayout.layout);
+      // the store mutates the data arrays in place, so tell Plotly they changed
+      traceDataLayout.layout.datarevision = Date.now();
+      Plotly.react(
+        this.plotId,
+        traceDataLayout.data,
+        traceDataLayout.layout,
+        this.plotlyConfig
+      );
     },
     getAllTraceDataLayout() {
       var data = [];
@@ -116,7 +122,7 @@ export default {
         }
         layout["yaxis" + i] = {
           tickformat: "$,.2f",
-          title: title,
+          title: { text: title },
           //   rangemode: "tozero",
         };
       }
@@ -143,19 +149,21 @@ export default {
       }
       data.push(earningTrace);
       var annotations = [];
-      annotations.push({
-        text: "Earnings",
-        showarrow: false,
-        xref: "x",
-        yref: "y",
-        x: earningTrace.x[0],
-        ax: 100,
-        y: earningTrace.y[0],
-        font: {
-          color: this.$store.getters.getColor(data.length - 1),
-        },
-        bgcolor: "#FFFFFF",
-      });
+      if (earningTrace.x.length && earningTrace.y.length) {
+        annotations.push({
+          text: "Earnings",
+          showarrow: false,
+          xref: "x",
+          yref: "y",
+          x: earningTrace.x[0],
+          ax: 100,
+          y: earningTrace.y[0],
+          font: {
+            color: this.$store.getters.getColor(data.length - 1),
+          },
+          bgcolor: "#FFFFFF",
+        });
+      }
 
       var layout = {
         height: window.innerHeight / 2,
@@ -165,7 +173,7 @@ export default {
           r: 5,
         },
         showlegend: false,
-        title: "Earnings",
+        title: { text: "Earnings" },
         yaxis: {
           tickformat: "$,.2f",
           rangemode: "tozero",
@@ -244,7 +252,7 @@ export default {
           r: 5,
         },
         showlegend: false,
-        title: "Transactions",
+        title: { text: "Transactions" },
         yaxis: {
           tickformat: "$,.2f",
           rangemode: "tozero",
@@ -291,7 +299,7 @@ export default {
     } else {
       traceDataLayout = this.getEarningsTraceDataLayout();
     }
-    Plotly.plot(
+    Plotly.newPlot(
       this.plotId,
       traceDataLayout.data,
       traceDataLayout.layout,

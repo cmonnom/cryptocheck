@@ -80,12 +80,11 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import CryptoTable from "@/components/CryptoTable.vue";
 import CryptoPlot from "@/components/CryptoPlot.vue";
 import CryptoSummary from "@/components/CryptoSummary.vue";
 import { mapGetters } from "vuex";
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
 
 export default {
   name: "Home",
@@ -197,7 +196,7 @@ export default {
       } else {
         // Use DataTransfer interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-          this.handleNewPortFolio(file);
+          this.handleNewPortFolio(ev.dataTransfer.files[i]);
           break;
         }
       }
@@ -245,6 +244,8 @@ export default {
       this.axios
         .get(url, {
           params: {},
+          // keep the raw text: validateJson() checks the string before parsing
+          responseType: "text",
         })
         .then((response) => {
           this.handleNewPortFolioContent(response.data);
